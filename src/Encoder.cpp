@@ -1,14 +1,16 @@
-#include "enc.hpp"
+#include "Encoder.hpp"
 #include <pigpio.h>
 #include <cmath>
+#include "Servo.hpp"
 
-void Enc::pulseEx(int gpio, int level, uint32_t tick, void *userdata)
+
+void Encoder::pulseEx(int gpio, int level, uint32_t tick, void *userdata)
 {
-    Enc *self = (Enc*) userdata;
+    Encoder *self = (Encoder*) userdata;
     self->pulse(gpio, level, tick);
 }
 
-void Enc::pulse(int gpio, int level, uint32_t tick)
+void Encoder::pulse(int gpio, int level, uint32_t tick)
 {
     if (gpio == myPin_A) level_A = level; else level_B = level;
     if(gpio != lastgpio)
@@ -30,7 +32,7 @@ void Enc::pulse(int gpio, int level, uint32_t tick)
 
 }
 
-Enc::Enc(const int pin_A, const int pin_B, void (*callback)(int))
+Encoder::Encoder(const int pin_A, const int pin_B, void (*callback)(int))
 {
     myPin_A = pin_A;
     myPin_B = pin_B;

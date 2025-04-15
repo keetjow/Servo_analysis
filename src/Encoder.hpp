@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-class Enc
+class Encoder
 {
     public:
-        Enc(const int pin_A, const int pin_B, void (*callback)(int));
+        Encoder(const int pin_A, const int pin_B, void (*callback)(int));
         int n;
 
     private:
